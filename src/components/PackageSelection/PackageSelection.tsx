@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 const PackageSelection: React.FC = () => {
+  const [isGooglebot, setIsGooglebot] = useState(false);
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // This will only run on the client side
+    setIsGooglebot(/Googlebot/i.test(navigator.userAgent));
+  }, []);
 
   // Get all current URL parameters
   const getCheckoutUrl = (baseUrl: string) => {
@@ -35,7 +41,7 @@ const PackageSelection: React.FC = () => {
             </div>
             <div className="mt-auto">
               <a
-                href={getCheckoutUrl('https://secure.vnsh.com/vnshblackbogogbbhy/starter-checkout')}
+                href={getCheckoutUrl('https://secure.vnsh.com/vnshblackbogogbbgg/starter-checkout')}
                 target="_self"
                 rel="noopener noreferrer"
                 className="block w-full"
@@ -69,7 +75,9 @@ const PackageSelection: React.FC = () => {
         </div>
 
         {/* Ultimate Package */}
-        <div className="bg-white rounded-2xl shadow-md overflow-hidden border-[3px] border-[#a3a0a0] w-[320px] flex flex-col order-1 lg:order-2">
+        <div
+          className={`bg-white rounded-2xl shadow-md overflow-hidden border-[3px] border-[#a3a0a0] w-[320px] flex flex-col order-1 lg:order-2 ${isGooglebot ? 'hidden' : ''}`}
+        >
           <div className="relative w-full h-64 overflow-hidden bg-[#ededed] flex items-start">
             <Image
               src="/contentimages/AdvancedMobileU2.webp"
@@ -122,7 +130,7 @@ const PackageSelection: React.FC = () => {
             <div className="mt-auto">
               <a
                 href={getCheckoutUrl(
-                  'https://secure.vnsh.com/vnshblackbogogbbhy/advanced-checkout'
+                  'https://secure.vnsh.com/vnshblackbogogbbgg/advanced-checkout'
                 )}
                 target="_self"
                 rel="noopener noreferrer"
@@ -157,7 +165,9 @@ const PackageSelection: React.FC = () => {
         </div>
 
         {/* Enhanced Package */}
-        <div className="bg-white rounded-2xl shadow-md overflow-hidden border-2 border-[#cdcdcd] w-[320px] flex flex-col order-2">
+        <div
+          className={`bg-white rounded-2xl shadow-md overflow-hidden border-2 border-[#cdcdcd] w-[320px] flex flex-col order-2 ${isGooglebot ? 'hidden' : ''}`}
+        >
           <div className="relative w-full h-[290px] overflow-hidden bg-white">
             <Image
               src="/contentimages/EnhancedMobileU2.webp"
@@ -188,7 +198,7 @@ const PackageSelection: React.FC = () => {
             <div className="mt-auto">
               <a
                 href={getCheckoutUrl(
-                  'https://secure.vnsh.com/vnshblackbogogbbhy/enhanced-checkout'
+                  'https://secure.vnsh.com/vnshblackbogogbbgg/enhanced-checkout'
                 )}
                 target="_self"
                 rel="noopener noreferrer"
